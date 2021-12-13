@@ -16,5 +16,4 @@ public class B14681 {
 			System.out.println(4);
 		}	
 	}
-
 }
