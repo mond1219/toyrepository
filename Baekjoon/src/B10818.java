@@ -8,7 +8,7 @@ public class B10818 {
 		for(int i=0;i<arr.length;i++) {//배열 크기만큼 입력 받음
 			arr[i] = sc.nextInt();
 		}
-		//잔디심기 확인gg
+		//잔디심기 확인
 		int min;int max;
 		if(arr.length>1) {//배열의 크기가 2이상일때
 			//앞에 인덱스 0과 1의 크기를 비교하여 그둘을 일단 min, max로 설정
