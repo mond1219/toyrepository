@@ -21,8 +21,8 @@ public class B1065 {
 						gap[i-1]=numArray[i]-numArray[i-1];//숫자 사이의 간격 저장해주기
 					}
 				}
-				//3자리 숫자 입력 받으면숫자 0,1,2 
-				//gap은 2개 0,1
+				//3자리 숫자 입력 받으면숫자 저장된 숫자들의 배열 index는 0,1,2 
+				//gap은 2개 배열 index 0,1
 				numLength = numLength-1;
 				while(numLength>1) {
 					if(gap[numLength-1]!=gap[numLength-2]) {
