@@ -7,7 +7,7 @@ public class B1712 {
 		int oneM = sc.nextInt();
 		int selM = sc.nextInt();
 		
-		if(startM/(selM-oneM)<0) {
+		if(selM<=oneM) {
 			System.out.println(-1);
 		}else {
 			System.out.println(startM/(selM-oneM)+1);
