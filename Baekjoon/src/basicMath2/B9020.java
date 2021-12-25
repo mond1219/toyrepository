@@ -11,10 +11,8 @@ public class B9020 {
 		for(int i=0;i<test;i++){
 			int j=0;
 			while(true) {
-				System.out.println("입력숫자 >"+arr[i]+"j값>"+j);
 				if(check(arr[i]/2-j,arr[i]/2+j)) {
-					//이렇게 인덱스를 넣어주면 제일 처음 나온 소수 두개의 값은 차가 가장 작다.
-					//리스트에 담아준다.
+					//j값을 증가시켜 인덱스를 넣어주면 제일 처음 나온 소수 두개의 값은 차가 가장 작다.
 					System.out.println(arr[i]/2-j+" "+(arr[i]/2+j));
 					break;
 				}
