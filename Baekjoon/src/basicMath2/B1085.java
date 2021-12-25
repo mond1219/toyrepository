@@ -20,6 +20,5 @@ public class B1085 {
 			min = arr[3]-arr[1];
 		}
 		System.out.println(min);
-		
 	}
 }
