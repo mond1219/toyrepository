@@ -40,8 +40,7 @@ public class B2108 {
 				al.add(i);
 			}
 		}
-		//index2=-1이라면 최빈값이 하나이므로
-		if(al.size()==2) {
+		if(al.size()==2) {//index2=-1이라면 최빈값이 하나이므로
 			return al.get(1)-4000;
 		}else {//최빈값같은거 2이상
 			int min1=0;
@@ -53,15 +52,13 @@ public class B2108 {
 				min1=al.get(1);
 				min2=al.get(3);
 			}
-			
 			for(int i=5;i<al.size();i=i+2) {
 				if(min1>al.get(i)) {
 					min2=min1;
 					min1=al.get(i);
 				}
 			}
-			//min2는 두번째로 작은 최빈값
-			return min2-4000;
+			return min2-4000;//min2는 두번째로 작은 최빈값
 		}
 		
 		
