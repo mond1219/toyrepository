@@ -1,56 +1,73 @@
 package Datastructure_200;
 import java.util.*;
 public class B10828 {
-	static Scanner sc = new Scanner(System.in);
-	static int arr[];
-	static int size=0;
+	public static int arr[];
+	public static int size=0;
+	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		StringBuilder sb = new StringBuilder();
 		int count = sc.nextInt();
 		arr = new int[count];
 		for(int i=0;i<count;i++) {
 			String str = sc.next();
+//			switch(str) {
+//			case "push":
+//				push(sc.nextInt());
+//				break;
+//			case "pop":
+//				pop();
+//				break;
+//			case "size":
+//				size();
+//				break;
+//			case "empty":
+//				empty();
+//				break;
+//			case "top":
+//				top();
+//				break;
+//			}
 			if(str.equals("push")) {
-				push();
+				push(sc.nextInt());
 			}else if(str.equals("pop")) {
-				pop();
+				sb.append(pop()).append("\n");
 			}else if(str.equals("size")) {
-				size();
+				sb.append(size()).append("\n");
 			}else if(str.equals("empty")) {
-				empty();
+				sb.append(empty()).append("\n");
 			}else if(str.equals("top")) {
-				top();
+				sb.append(top()).append("\n");
 			}
 		}
+		System.out.println(sb);
 	}
-	static void push() {
-		int num = sc.nextInt();
+	static void push(int num) {
 		arr[size]=num;
 		size++;
 	}
-	static void pop() {
+	static int pop() {
 		if(size==0) {
-			System.out.println("-1");
+			return -1;
 		}else {
-			System.out.println(arr[size-1]);
-			arr[size-1]=0;
-			size--;
+			return arr[--size];//감소시킨 후에 그 값을 사용
 		}
 	}
-	static void size(){
-		System.out.println(size);
+	static int size(){
+		return size;
 	}
-	static void empty() {
+	static int empty() {
 		if(size==0) {
-			System.out.println("1");
+			return 1;
 		}else {
-			System.out.println("0");
+			return 0;
 		}
 	}
-	static void top() {
+	static int top() {
 		if(size==0) {
-			System.out.println("-1");
+			return -1;
 		}else {
-			System.out.println(arr[size-1]);
+			return arr[size-1];
 		}
 	}
 }
