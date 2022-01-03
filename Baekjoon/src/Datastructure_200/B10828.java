@@ -11,23 +11,6 @@ public class B10828 {
 		arr = new int[count];
 		for(int i=0;i<count;i++) {
 			String str = sc.next();
-//			switch(str) {
-//			case "push":
-//				push(sc.nextInt());
-//				break;
-//			case "pop":
-//				pop();
-//				break;
-//			case "size":
-//				size();
-//				break;
-//			case "empty":
-//				empty();
-//				break;
-//			case "top":
-//				top();
-//				break;
-//			}
 			if(str.equals("push")) {
 				push(sc.nextInt());
 			}else if(str.equals("pop")) {
