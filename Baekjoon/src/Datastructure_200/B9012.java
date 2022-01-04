@@ -10,10 +10,8 @@ public class B9012 {
 			sb.append(check(sc.nextLine()));
 		}
 		System.out.println(sb.toString());
-		
-		
-
 	}
+	
 	static String check(String str) {
 		Stack st = new Stack();
 		for(int i=0;i<str.length();i++) {
