@@ -1,59 +1,51 @@
 package Datastructure_200;
 import java.util.*;
+import java.io.*;
 public class B1406 {
-	static String str;
-	static int index=0;//커서 위치
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		str = sc.next();
-		index = str.length();
-		int count = sc.nextInt();
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String str = br.readLine();
+		
+		Stack<String>left = new Stack<String>();
+		Stack<String> right = new Stack<String>();
+		String arr[] = str.split("");
+		for(String s : arr) {
+			left.push(s);
+		}
+		int count = Integer.parseInt(br.readLine());
 		for(int i=0;i<count;i++) {
-			String order = sc.next();
-			switch(order){
-			case "L":
-				left();
+			String order = br.readLine();
+			switch(order.charAt(0)){
+			case 'L':
+				if(!left.isEmpty()) {
+					right.push(left.pop());
+				}
 				break;
-			case "D":
-				right();
+			case 'D':
+				if(!right.isEmpty()) {
+					left.push(right.pop());
+				}
 				break;
-			case "B":
-				delete();
+			case 'B':
+				if(!left.isEmpty()) {
+					left.pop();
+				}
 				break;
-			case "P":
-				plus(sc.next());
+			case 'P':
+				left.push(String.valueOf(order.charAt(2)));
+				break;
+			default:
 				break;
 			}
 		}
-		System.out.println(str);
-	}
-	static void left(){
-		if(index>0) {	
-			index--;
+		while(!left.isEmpty()) {//오른쪽 stack으로 다 옮겨주고
+			right.push(left.pop());
 		}
-	}
-	static void right() {
-		if(index<str.length()) {
-			index++;
+		while(!right.isEmpty()) {
+			bw.write(right.pop());
 		}
-	}
-	static void delete() {
-		if(index==str.length()) {//커서가 문장 제일 끝에 있을때
-			str = str.substring(0,index-1);
-			index--;//커서위치 왼쪽으로 당겨주기
-		}else if(0<index && index<str.length()) {//커서가 문장 중간에 있을때
-			str = str.substring(0,index-1)+str.substring(index);
-			index--;
-		}//index가 0일때는 그냥 그대로 내비둔다.
-	}
-	static void plus(String a) {
-		if(index==str.length()) {//커서가 문장 제일 끝에 있을때
-			str = str+a;
-		}else if(0<index && index<str.length()){
-			str = str.substring(0,index)+a+str.substring(index);
-		}else {//index==0일때
-			str = a+str;
-		}
-		index++;	
+		bw.flush();
+		bw.close();
 	}
 }
