@@ -14,7 +14,7 @@ public class B1158 {
 		int i=0;
 		bw.write("<");
 		while(i<Integer.parseInt(arr[0])) {
-			for(int j=1;j<Integer.parseInt(arr[1]);j++) {
+			for(int j=1;j<Integer.parseInt(arr[1]);j++) {//건너뛸 횟수만큼 반복
 				queR.add(queR.poll());//첫번째거 빼고 제일뒤에 넣기
 			}
 			bw.write(queR.poll()+"");
