@@ -1,55 +1,60 @@
 package Datastructure_200;
-import java.util.*;
+import java.io.*;
 public class B10845 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader  br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
-		int count = sc.nextInt();
+		int count = Integer.parseInt(br.readLine());
 		int first = 0;//첫번째 index
 		int last = 0;//queue개수
 		int arr[] = new int[count];
 		
 		for(int i=0;i<count;i++) {
-			String order = sc.next();
+			String order = br.readLine();
 			switch(order){
-			case "push":
-				arr[last]=sc.nextInt();
-				last++;
-				break;
-			case "pop"://수정하기 
+			case "pop":
 				if(last != first) {
-					System.out.println(arr[first]);
+					sb.append(arr[first]+"\n");
 					arr[first]=0;
 					first++;
 				}else {
-					System.out.println("-1");
+					sb.append("-1\n");
 				}
 				break;
 			case "size":
-				System.out.println(last-first);
+				sb.append((last-first)+"\n");
 				break;
 			case "empty":
 				if(last != first) {
-					System.out.println("0");
+					sb.append("0\n");
 				}else {//존재할때
-					System.out.println("1");
+					sb.append("1\n");
 				}
 				break;
 			case "front":
 				if(last != first) {//큐가 비어있지 않으면
-					System.out.println(arr[first]);
+					sb.append(arr[first]+"\n");
 				}else {
-					System.out.println("-1");
+					sb.append("-1\n");
 				}
 				break;
 			case "back":
 				if(last != first) {
-					System.out.println(arr[last-1]);
+					sb.append(arr[last-1]+"\n");
 				}else {
-					System.out.println("-1");
+					sb.append("-1\n");
 				}
+				break;
+			default : //push일때
+				String orderArr[] = order.split(" ");
+				arr[last]=Integer.parseInt(orderArr[1]);
+				last++;
 				break;
 			}
 		}
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
 	}
 }
