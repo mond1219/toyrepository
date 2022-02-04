@@ -54,15 +54,14 @@ public class B3085 {
 		
 	}
 	static int check(char[][] temp) {
-		int ans = 1;
-		int max = 1;
+		int max = 0;
 		for(int i=0;i<count;i++) {
-			
+			int ans = 1;
 			for(int j=1;j<count;j++) {
 				if(temp[i][j] == temp[i][j-1]) {//행으로 같은것 끼리 count하기
-					ans+=1;
+					ans++;
 				}else {
-					ans =1;
+					ans = 1;
 				}
 				if(ans>max) {
 					max = ans;
@@ -73,7 +72,7 @@ public class B3085 {
 				if(temp[j][i] == temp[j-1][i]) {
 					ans++;
 				}else {
-					ans =1;
+					ans = 1;
 				}
 				if(ans>max) {
 					max = ans;
@@ -82,6 +81,4 @@ public class B3085 {
 		}
 		return max;
 	}
-	
-
 }
