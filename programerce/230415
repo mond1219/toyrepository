@@ -1,4 +1,5 @@
 # 달리기 경주 
+https://school.programmers.co.kr/learn/courses/30/lessons/178871
 
 def solution(players, callings):
     answer = []
@@ -26,3 +27,53 @@ def solution(players, callings):
         answer.append(rangeDict[idx])
         
     return answer
+
+# 공원산책  아직 미완성 다음주 수정 바람,,,
+https://school.programmers.co.kr/learn/courses/30/lessons/172928
+"""
+    ["E 2", "S 2", "W 1"]
+    1. 시작   
+    SOO  
+    OOO
+    OOO
+    2. E 2 
+    OOS
+    OOO
+    OOO
+    3. S 2
+    OOO
+    OOO
+    OOS
+    4. W 1
+    OOO
+    OOO
+    OSO
+"""
+def solution(park, routes):
+    start = []
+    for row, parkStr in enumerate(park):
+        if parkStr.find("S") >= 0:
+            start = [row, parkStr.find("S")]
+            break
+    wayDict = {"W":[0,-1], "E":[0, 1], "N":[-1, 0], "S":[1, 0]}
+    for idx, route in enumerate(routes):
+        way = route.split(' ')[0]
+        count = int(route.split(' ')[1])
+        tempstart = start.copy()
+        for idx in range(0,count):
+            tempList = wayDict[way]
+            l = tempstart[0] + tempList[0] # 행
+            r = tempstart[1] + tempList[1] # 열 
+            # l은 len(park)-1 보다 작거나 같아야함 and r은 len(park[0])-1 보다 작거나 같아야함 
+            if l >= 0 and l<=len(park)-1 and r >= 0 and r<= len(park[0])-1:
+                parkStr = park[l][r]
+                if parkStr == 'O' or  parkStr == 'S':# 이게 O거나 S면 ok 아니면 
+                    tempstart = [l,r]
+                else: # X 장애물 만난 경우  다음 명령어 수행
+                    break    
+            else:# 공원안에 있지 않아 그냥 다음 명령어 수행
+                break
+        start = tempstart
+        print(idx,"번째 ",tempstart)
+        
+    return start
