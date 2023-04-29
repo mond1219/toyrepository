@@ -1,0 +1,39 @@
+    공원산책 
+    https://school.programmers.co.kr/learn/courses/30/lessons/172928
+    def solution(self):
+        park = ["OSO","OOO","OXO","OOO"]
+        routes = ["E 2","S 3","W 1"]
+
+        start = []
+        for row, parkStr in enumerate(park):
+            if parkStr.find("S") >= 0:
+                start = [row, parkStr.find("S")]  # Start 지점 찾기
+                break
+
+        tempstart = start.copy()  # 시작위치 복사
+
+        for route in routes:
+            way = route.split(' ')[0]  # 방향
+            count = int(route.split(' ')[1])  # 횟수
+            check = self.routeCalculation(park, way, count, tempstart)
+            if check != False:
+                tempstart = check
+        print(tempstart)
+
+    def routeCalculation(self, park, way, count, nowList):
+        wayDict = {"W": [0, -1], "E": [0, 1], "N": [-1, 0], "S": [1, 0]}
+        # nowList: 현재 위치
+        tempList = nowList.copy()
+        for wayCount in range(0, count):
+            temHang = tempList[0] + wayDict[way][0]  # way 행 연산
+            temCol = tempList[1] + wayDict[way][1]  # way 열 연산
+            # park안에있는지 확인
+            if len(park) - 1 < temHang or len(park[0])- 1 < temCol:
+                return False  # park 밖임 끝내
+            # 장애물을 만났는지 확인
+            if park[temHang][temCol] == 'X':
+                return False  # 장애물만남 끝내
+            # 이번에는 ㄱㅊㄱㅊ 저장해놓기
+            tempList = [temHang, temCol]
+        # 여기까지 False 안만나고 끝났으면,,
+        return tempList
