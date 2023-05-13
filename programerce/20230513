@@ -1,0 +1,15 @@
+# 프로그래머스 추억점수 
+https://school.programmers.co.kr/learn/courses/30/lessons/176963
+
+def solution(name, yearning, photo):
+    nameDict = dict()
+    for name1, year1 in zip(name, yearning):
+        nameDict[name1] = year1
+    result = []
+    for row in photo:
+        rowResult = 0
+        for i in row:
+            if i in nameDict:
+                rowResult += nameDict[i]
+        result.append(rowResult)
+    return result
