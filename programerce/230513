@@ -13,3 +13,28 @@ def solution(name, yearning, photo):
                 rowResult += nameDict[i]
         result.append(rowResult)
     return result
+    
+# 대충만든 자판
+https://school.programmers.co.kr/learn/courses/30/lessons/160586
+def solution(keymap, targets):
+    keymapDict = dict()
+    for row in keymap:
+        for idx, key in enumerate(row):
+            if key in keymapDict: # key여러개 크기 비교해서 작은 값이면 현재 idx+1 넣어주기
+                if keymapDict[key] > idx+1:
+                    keymapDict[key] = idx+1
+            else: #무조건 dict에 넣어주기
+                keymapDict[key] = idx+1
+    result = []
+    for target in targets:
+        rowResult = 0
+        for key in target:
+            if key in keymapDict:
+                rowResult+=keymapDict[key]
+            else: # 무조건 -1 반환하기
+                rowResult = -1
+                result.append(-1)
+                break
+        if rowResult != -1:
+            result.append(rowResult)
+    return result
