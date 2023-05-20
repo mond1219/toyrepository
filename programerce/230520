@@ -24,3 +24,39 @@ def two(s, skip, index):
         answer += chr(changeChar)
 
     return answer
+    
+# 프로그래머스 덧칠하기 
+# https://school.programmers.co.kr/learn/courses/30/lessons/161989
+from collections import deque
+def paint(n, m, section):
+    answer = 0
+    deq = deque(section)  # deque에 넣어놓기
+    start = 0  # 왼쪽에서 빼기 , 제일 뒤에서 빼기
+    while len(deq) > 0:
+        if start == 0:  # 왼쪽에서 제거
+            removeStart = deq.popleft()
+            for idx in range(1, m):
+                if len(deq) == 0:
+                    return answer + 1
+                temp = deq.popleft()
+                if removeStart+1 == temp:
+                    removeStart = temp
+                else:
+                    removeStart += 1
+                    deq.appendleft(temp)
+            answer += 1
+            start = 1
+        elif start == 1:
+            removeStart = deq.pop()
+            for idx in range(1, m):
+                if len(deq) == 0:
+                    return answer + 1
+                temp = deq.pop()
+                if removeStart - 1 == temp:
+                    removeStart = temp
+                else:
+                    removeStart -= 1
+                    deq.append(temp)
+            answer += 1
+            start = 0
+    return answer
