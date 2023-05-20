@@ -1,0 +1,26 @@
+# 프로그래머스 둘만의 암호 
+# https://school.programmers.co.kr/learn/courses/30/lessons/155652#
+
+def two(s, skip, index):
+    answer = ''
+    skipSet = set()
+    for idx in range(0, len(skip)):
+        skipSet.add(ord(skip[idx]))
+
+    for idx in range(0, len(s)):
+        changeChar = ord(s[idx])
+        count = 0
+        while count < index:
+            if changeChar + 1 in skipSet:
+                changeChar += 1
+            elif changeChar + 1 > 122: # z를 넘어가버리는 경우
+                changeChar = changeChar - 25
+                check = changeChar in skipSet
+                if check == False:
+                    count += 1
+            else:
+                changeChar += 1
+                count += 1
+        answer += chr(changeChar)
+
+    return answer
