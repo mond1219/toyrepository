@@ -1,0 +1,40 @@
+# 프로그래머스 카드뭉치
+# https://school.programmers.co.kr/learn/courses/30/lessons/159994
+
+def cardGame(cards1, cards2, goal):
+    for temp in goal:
+        if len(cards1) > 0 and cards1[0] == temp :
+            cards1 = cards1[1:]
+        elif len(cards2) > 0 and cards2[0] == temp:
+            cards2 = cards2[1:]
+        else:
+            return "No"
+    return "Yes"
+# 2023 KAKAO BLIND RECRUITMENT 개인정보 수집 유효기간
+# https://school.programmers.co.kr/learn/courses/30/lessons/150370
+
+def perInfo(today, terms, privacies):
+    result = []
+    termDict = dict()
+    for term in terms:
+        termList = term.split(' ')
+        termDict[termList[0]] = termList[1]
+    todayList = today.split('.') # todayList[0] = Y, [1] = M, [2] = D
+    
+    for idx, privacie in enumerate(privacies):
+        nowTerm = termDict[privacie[-1]]
+        dayList = privacie[:-2].split('.')
+        year = int(dayList[0])
+        month = int(dayList[1])+int(nowTerm)
+        day = int(dayList[2]) -1
+        if month > 12:
+            year += 1
+            month -= 12
+        if day == 0:
+            month -= 1
+            day = 28
+        # 유효기간 > today 이면 파기 X  날짜가 today보다 작으면된다.
+        if (year-int(todayList[0]) ) *12 *28 +(month - int(todayList[1])) *28 + day-int(todayList[2]) < 0:
+            result.append(idx+1)
+    return result
+
