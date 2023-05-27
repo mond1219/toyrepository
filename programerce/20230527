@@ -1,0 +1,12 @@
+# 프로그래머스 카드뭉치
+# https://school.programmers.co.kr/learn/courses/30/lessons/159994
+
+def cardGame(cards1, cards2, goal):
+    for temp in goal:
+        if len(cards1) > 0 and cards1[0] == temp :
+            cards1 = cards1[1:]
+        elif len(cards2) > 0 and cards2[0] == temp:
+            cards2 = cards2[1:]
+        else:
+            return "No"
+    return "Yes"
