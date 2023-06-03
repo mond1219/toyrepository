@@ -29,3 +29,30 @@ def dartGame(dartResult):
     answer.append(tempAnswer)   # 마지막 최종결과 담아주기
 
     return sum(answer)
+    
+# 숫자 짝꿍 
+# https://school.programmers.co.kr/learn/courses/30/lessons/131128 
+# 시간 초과코드 수정 필요
+def intCouple(X, Y):
+    answer = []
+    # set을 통해 둘의 교집합을 찾고 교집합의 개수를 가지고 최대 숫자를 만든다. 큰 숫자로 나열하면 될듯?
+    intersection = set(list(X)) & set(list(Y))
+    if len(intersection) == 0:
+        return '-1'
+    for temp in intersection:
+        xCnt = X.count(temp)
+        yCnt = Y.count(temp)
+        if xCnt <= yCnt:
+            # x 개수만큼 answer에 담기
+            cnt = xCnt
+        else:
+            cnt = yCnt
+        for idx in range(0, cnt):
+            answer.append(temp)
+    # answer에 짝꿍들을 다 담아줌
+    result = ''
+    answer.sort(reverse=True)
+    for temp in answer:
+        result += str(temp)
+
+    return str(int(result))
