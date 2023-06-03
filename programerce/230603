@@ -1,0 +1,31 @@
+# 2018 KAKAO BLIND RECRUITMENT [1차 다트 게임] 
+# https://school.programmers.co.kr/learn/courses/30/lessons/17682
+def dartGame(dartResult):
+    answer = []
+    tempInt = ''
+    tempAnswer = 0
+    for idx in range(0, len(dartResult)):
+        tempStr = dartResult[idx]
+        if tempStr.isdigit():
+            beforAnswer = tempAnswer
+            answer.append(tempAnswer)
+            tempAnswer = 0  # 중간 계산결과 초기화
+            tempInt = tempInt + dartResult[idx]
+        else:  # 문자나 숫자일 것임
+            if tempStr == 'D':
+                tempAnswer = int(tempInt) * int(tempInt)
+            elif tempStr == 'T':
+                tempAnswer = int(tempInt) * int(tempInt) * int(tempInt)
+            elif tempStr == 'S':
+                tempAnswer = int(tempInt)
+            tempInt = ''  # 초기화
+            if tempStr == '*':
+                if len(answer)>0 :
+                    beforAnswer = answer.pop()*2 # 마지막 계산값  *2
+                    answer.append(beforAnswer)
+                tempAnswer = tempAnswer * 2 # 현재 결과 * 2
+            elif tempStr == '#':
+                tempAnswer = tempAnswer * (-1)
+    answer.append(tempAnswer)   # 마지막 최종결과 담아주기
+
+    return sum(answer)
