@@ -42,3 +42,29 @@ def solution(wallpaper):
         return [x,y, x+1, y+1]
 
     return [xList.pop(0), yList.pop(0), xList.pop()+1, yList.pop()+1]
+    
+# 2018 KAKAO BLIND RECRUITMENT 1차 비밀지도
+# https://school.programmers.co.kr/learn/courses/30/lessons/17681
+
+def solution(n, arr1, arr2):
+    answer = []
+    for row1, row2 in zip(arr1, arr2):
+        temp1 = str(bin(row1)).replace("0b", '')
+        temp2 = str(bin(row2)).replace("0b", '')
+        if len(temp1) < n :
+            cnt = n - len(temp1)
+            for idx in range(0, cnt):
+                temp1 = "0"+temp1
+        if len(temp2)< n:
+            cnt = n - len(temp2)
+            for idx in range(0, cnt):
+                temp2 = "0"+temp2
+        resultStr = ''
+        for idx in range(0, n):
+            if temp1[idx] == '1' or temp2[idx] == '1':
+                resultStr += '#'
+            else:
+                resultStr += ' '
+        answer.append(resultStr)
+    return answer
+
