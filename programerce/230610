@@ -22,3 +22,23 @@ def solution(X, Y):
     answer.sort(reverse=True)
     
     return ''.join(answer)
+
+# 바탕화면 정리 
+# https://school.programmers.co.kr/learn/courses/30/lessons/161990
+def solution(wallpaper):
+    xList = []
+    yList = []
+    # 최대값은 파일의 크기가 1만큼 차지는 것으로 +1 해줘야한다. 
+    for xidx, xrow in enumerate(wallpaper):
+        for yidx, yrow in enumerate(xrow):
+            if yrow =='#':
+                xList.append(xidx)
+                yList.append(yidx)
+    xList.sort()
+    yList.sort()
+    if len(xList) == 1:
+        x = xList.pop()
+        y = yList.pop()
+        return [x,y, x+1, y+1]
+
+    return [xList.pop(0), yList.pop(0), xList.pop()+1, yList.pop()+1]
