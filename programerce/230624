@@ -1,0 +1,10 @@
+#  푸드파이트 대회
+# https://school.programmers.co.kr/learn/courses/30/lessons/134240
+def solution(food):
+    answer = []
+    food.pop(0)
+    for idx, count in enumerate(food):
+        for num in range(count//2):
+            answer.append(str(idx+1)) 
+
+    return "".join(answer)+"0"+ "".join(sorted(answer,reverse=True))
