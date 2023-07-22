@@ -15,3 +15,14 @@
 2. View는 Presenter에 액션이 들어왔다고 전달
 3. Presenter는 View액션대로 Model이나 Service를 구성한다.
 4. Update된 Presenter의 데이터를 View에 업데이트한다.
+
+## 1.10 MVVM 패턴
+- MVC의 C에 해당하는 컨트롤러가 View Model로 바뀐 패턴
+- View Model : View를 더 추상화한 계층, MVC와는 다르게 커맨드와 데이터 바인딩을 가지는 것이 특징
+- 뷰와 뷰 모델 사이읭 양방향 데이터 바인딩을 지원하면 UI를 별도의 코드 수정 없이 재사용할 수 있고 단위 테스팅하기 쉽다.
+
+💚예시
+Vue.js가 대표적인 MVVM패턴, watch와 computed 등으로 쉽게 반응형적인 값들을 구축할 수잇다. 
+함수를 사용하지 않고 값 대입만으로도 변수가 변경되며 양방향 바인딩, html을 토대로 컴포넌트를 구축할 수 있는 장점
+재사용 가능한 컴포넌트 기반으로 UI를 구축
+   
