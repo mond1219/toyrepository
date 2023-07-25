@@ -28,3 +28,18 @@
 - `static array` 한계
   - 데이터가 정해져 있으면 효율적이지만 선언보다 많은 데이터를 저장해야 할 때는 비효율적
   - 매번 크기가 엄청 큰 배열을 선언하면 메모리 비효율, 이런 문제점 해결은 `dynamic array`
+
+
+## 1.2 동적 배열 Dynamic array
+- 선언 이후 size를 늘릴 수 있다.
+- resizing : 선언한 static 배열보다 더 많은 값을 저장하게 되면 기존의 있던 배열보다 두배 더 큰 배열을 할당 받고 기존에 있던 값들을 옮겨 적는다
+- 기존에 static 배열에 값을 저장하는 과정은 O(1)이지만 resizing하는 과정은 O(n)이다
+- python의 list는 dynamic array로 되어 있고 growth pattern은 0, 4, 8, 16, 24, 32, 48, 52, 64, 76, ... 로 resize한다.
+
+| access/update | Static | Dynamic |
+| -------       | ---    | ---     |
+| access/update | O(1)   | O(1)    |
+| insert_back   | O(1)   | amortized O(1)|
+| delete_back   | O(1)   | O(1)    |
+| insert_at     | O(n)   | O(n)    |
+| delete_at     | O(n)   | O(n)    |
