@@ -1,4 +1,4 @@
-# List
+# 1. List
 - [1, 2, 3] [3, 1, 2] `순서`만 바뀌어도 전혀 다른 List이다.
 
  - 1.1 Array List   
@@ -43,3 +43,69 @@
 | delete_back   | O(1)   | O(1)    |
 | insert_at     | O(n)   | O(n)    |
 | delete_at     | O(n)   | O(n)    |
+
+
+# 2. Linked List
+
+## 2.1 get()
+``` python
+class LinkedList(object):
+  def __init__(self):
+    self.head = None
+  def get(self, idx):
+    # 1. head에 접근
+    current = self.head
+    # 2. 원하는 인덱스로 이동
+    for _ in range(idx):
+       current = current.next
+    # 3. value 반환
+    return current.value
+```
+
+## 2.2 insert_at(idx, value)
+
+``` python
+class LinkedList(object):
+  def __init__(self):
+    self.head = None
+  def insert(self, idx, value):
+    # 1. head에 접근
+    current = self.head
+    for _ in range(idx):
+       if _ == idx-1:
+         new_node.next = current.next
+         current.next = Node(value)
+       current = current.next
+```
+
+## 2.3 remove_at(idx, value)
+
+``` python
+class LinkedList(object):
+  def __init__(self):
+    self.head = None
+  def remove(self, idx, value):
+    # 1. head에 접근
+    current = self.head
+    for _ in range(idx):
+       if _ == idx-1:
+         current.next = current.next.next
+       current = current.next
+```
+## 2.4 insert_back(value) tail version O(1)
+
+``` python
+class LinkedList(object):
+  def __init__(self):
+    self.head = None
+    self.tail = None
+  def appned(self, value):
+    new_node = Node(value)
+    if self.head is None:
+      self.head = new_node
+      self.tail = new_node
+    else: # O(1)으로 insert back을 한다.
+      self.tail.next = new_node
+      self.tail = self.tail.next
+```
+
