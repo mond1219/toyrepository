@@ -1,3 +1,5 @@
+출처 : https://www.nossi.dev/
+---
 # Queue
 - 선입선출 FIFO(First In First Out)형식으로 데이터를 저장하는 자료구조
 - queue의 rear(뒤)에 데이터를 추가하는 것을 enqueue라고 한다.
