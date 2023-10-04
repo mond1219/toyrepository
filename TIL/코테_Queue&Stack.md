@@ -54,3 +54,30 @@ stack.pop()
 stack.pop()
 stack.pop()
 ```
+valid Parentheses 문제 23.10.05 풀이 temp를 리스트로 바꿔 주어야한다. 
+
+```python
+    class LifoFirst(object):
+        def __init__(self, input):
+            self.stack = list(input)
+        def check(self):
+            temp = ''
+            for str in self.stack:
+                if str == '(' or str == '{' or str == '[':
+                   if len(temp) != 0:
+                       return False
+                   else:
+                       temp = str
+                elif len(temp) == 0:
+                    return False
+                elif temp != '(' and str == ')':
+                    return False
+                elif temp != '{' and str == '}':
+                    return False
+                elif temp != '[' and str == ']':
+                    return False
+            return True
+    if __name__ == '__main__':
+        lifo = LifoFirst('([]}')
+        print(lifo.check())
+```
