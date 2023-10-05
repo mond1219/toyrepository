@@ -54,29 +54,28 @@ stack.pop()
 stack.pop()
 stack.pop()
 ```
-valid Parentheses 문제 23.10.05 풀이 temp를 리스트로 바꿔 주어야한다. 
+valid Parentheses 문제 23.10.05 풀이 temp를 리스트로 바꿔 주어야한다.   
+23.10.06 temp -> stack으로 바꿔주고 사용자 입력 값을 inputList로 바꿔주었다. 
 
 ```python
     class LifoFirst(object):
         def __init__(self, input):
-            self.stack = list(input)
+            self.inputList = list(input)
+    
         def check(self):
-            temp = ''
-            for str in self.stack:
+            stack = []
+            for str in self.inputList:
                 if str == '(' or str == '{' or str == '[':
-                   if len(temp) != 0:
-                       return False
-                   else:
-                       temp = str
-                elif len(temp) == 0:
+                   stack.append(str)
+                elif len(stack) == 0:
                     return False
-                elif temp != '(' and str == ')':
+                elif str == ')' and stack.pop() != '(':
                     return False
-                elif temp != '{' and str == '}':
+                elif str == '}' and stack.pop() != '{':
                     return False
-                elif temp != '[' and str == ']':
+                elif str == ']' and stack.pop() != '[':
                     return False
-            return True
+            return not stack
     if __name__ == '__main__':
         lifo = LifoFirst('([]}')
         print(lifo.check())
