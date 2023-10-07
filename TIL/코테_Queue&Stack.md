@@ -54,7 +54,8 @@ stack.pop()
 stack.pop()
 stack.pop()
 ```
-valid Parentheses 문제 23.10.05 풀이 temp를 리스트로 바꿔 주어야한다.   
+### valid Parentheses 문제 
+23.10.05 풀이 temp를 리스트로 바꿔 주어야한다.   
 23.10.06 temp -> stack으로 바꿔주고 사용자 입력 값을 inputList로 바꿔주었다. 
 
 ```python
@@ -80,3 +81,28 @@ valid Parentheses 문제 23.10.05 풀이 temp를 리스트로 바꿔 주어야�
         lifo = LifoFirst('([]}')
         print(lifo.check())
 ```
+
+### Dayly Temperatures 문제 
+23.10.07 시간복잡도가 O(n^2)으로 복잡하다. 
+```python
+    class DailyTemperatures(object):
+        def check(self, temperatures):
+            output = []
+            for idx, temp in enumerate(temperatures):
+                for cnt in range(idx+1,len(temperatures)):
+                    if temp < temperatures[cnt]:
+                        output.append(cnt-idx)
+                        break
+    
+                if len(output)-1 < idx:
+                    output.append(0)
+            return output
+    
+    
+    
+    if __name__ == '__main__':
+        temperatures = [30, 40, 50, 60]
+        daily = DailyTemperatures()
+        print(daily.check(temperatures))
+```
+
