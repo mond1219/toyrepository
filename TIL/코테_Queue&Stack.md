@@ -83,23 +83,27 @@ stack.pop()
 ```
 
 ### Dayly Temperatures 문제 
-23.10.07 시간복잡도가 O(n^2)으로 복잡하다. 
+23.10.07 시간복잡도가 O(n^2)으로 복잡하다.   
+23.10.09 시간 복잡도를 낮추어 풀이
 ```python
     class DailyTemperatures(object):
-        def check(self, temperatures):
-            output = []
-            for idx, temp in enumerate(temperatures):
-                for cnt in range(idx+1,len(temperatures)):
-                    if temp < temperatures[cnt]:
-                        output.append(cnt-idx)
+    def check(self, temperatures):
+        stacks = []
+        for idx, temp in enumerate(temperatures):
+            if idx != 0 or len(stacks) != 0:
+                cnt = len(stacks)
+                while(cnt > 0):
+                    if stacks[-1][0] < temp:
+                        temperatures[stacks[-1][1]]= idx - stacks[-1][1]
+                        stacks.pop()
+                        cnt -= 1
+                    else:
                         break
-    
-                if len(output)-1 < idx:
-                    output.append(0)
-            return output
-    
-    
-    
+            stacks.append([temp, idx])
+        temperatures[-1] = 0
+
+        return temperatures
+
     if __name__ == '__main__':
         temperatures = [30, 40, 50, 60]
         daily = DailyTemperatures()
