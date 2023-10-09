@@ -87,10 +87,10 @@ stack.pop()
 23.10.09 시간 복잡도를 낮추어 풀이
 ```python
     class DailyTemperatures(object):
-    def check(self, temperatures):
+       def dailyTemperatures(self, temperatures):
         stacks = []
         for idx, temp in enumerate(temperatures):
-            if idx != 0 or len(stacks) != 0:
+            if len(stacks) != 0:
                 cnt = len(stacks)
                 while(cnt > 0):
                     if stacks[-1][0] < temp:
@@ -98,6 +98,7 @@ stack.pop()
                         stacks.pop()
                         cnt -= 1
                     else:
+                        temperatures[stacks[-1][1]] = 0
                         break
             stacks.append([temp, idx])
         temperatures[-1] = 0
@@ -109,4 +110,18 @@ stack.pop()
         daily = DailyTemperatures()
         print(daily.check(temperatures))
 ```
+
+노씨님 풀이 
+```python
+    def check(self, temperatures):
+        answer = [0] * len(temperatures)
+        stack = []
+        for cur_day, cur_temp in enumerate(temperatures):
+            while stack and stack[-1][1] < cur_temp:
+                prev_day, _ = stack.pop()
+                answer[prev_day] = cur_day - prev_day
+            stack.append((cur_day, cur_temp))
+        return answer
+```
+
 
