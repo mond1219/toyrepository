@@ -24,3 +24,31 @@ if __name__ == '__main__':
     toSum = ToSum()
     print(toSum.check(nums, target))
 ```
+
+### Longest Consecutive Sequence
+23.10.12 정렬 후 diction로 증가 시키기
+
+```python
+class LongestSequence(object):
+    def consecutive(self, nums):
+        if len(nums) == 0:
+            return 0
+        # 정렬하고, max값 찾아주기
+        nums.sort()
+        numsDict = {} # beforeNumber : maxCnt
+        max = 0
+        for num in nums:
+            if num -1 in numsDict:
+                numsDict[num] = numsDict[num-1] + 1
+                if max < numsDict[num-1] + 1:
+                    max = numsDict[num-1] + 1
+                del numsDict[num-1]
+            else:
+                numsDict[num] = 1
+
+        return max
+if __name__ == '__main__':
+    sequence = LongestSequence()
+    nums = [100, 4, 200, 1, 3, 2]
+    print(sequence.consecutive(nums))
+```
