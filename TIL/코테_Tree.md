@@ -42,3 +42,49 @@ bt.root.left.left =  Node(value = 4)
 bt.root.left.right = Node(value = 5)
 bt.root.right.right = Node(value = 6)
 ```
+
+# Traversal 트리 순회
+- 트리순회 == 트리 탐색(search), 트리의 각 노드를 방문하는 과정
+- 모든 노드를 한번 씩 방문해야 하므로 완전 탐색이라고도 불린다.
+- 순회 방법으로는 너비 우선 탐색의 BFS와 깊이 우선 탐색의 DFS가 있다.
+
+## 너비 우선 탐색 BFS
+-level의 따라서 level별로 탐색한다. 
+
+```python
+def bfs(root):
+  visited = []
+  if root is None:
+    return 0;
+  q = deque()
+  q.append(root)
+  while q:
+    cur_node = q.popleft()
+    visited.append(cur_node.value)
+
+    if cur_node.left:
+      q.append(cur_node.left)
+    if cur_node.right:
+      q.append(cur_node.right)
+  return visited
+
+bfs(root)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
