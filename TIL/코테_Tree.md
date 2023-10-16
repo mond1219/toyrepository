@@ -71,6 +71,19 @@ def bfs(root):
 bfs(root)
 ```
 
+## 깊이 우선 탐색 DFS
+
+```python
+def dfs(root):
+  if root is None:
+    return
+  dsf(root.left)
+  dfs(root.rignt)
+
+dfs(root)
+```
+
+
 
 
 
