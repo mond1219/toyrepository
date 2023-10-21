@@ -135,7 +135,26 @@ postorder(root)
     LCA([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 6, 4)
 ```
 
+### lecel order traversal
+23.10.21 완전 탐색, 재귀로 접근하여 풀이
+```python
+class MaximumDepthOfBinaryTree(object):
+    def maxDepth(self, root):
+        if root == None:
+            return
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        if left == None:
+            left = 1
+        elif left > 0:
+            left += 1
 
+        if right == None:
+            right = 1
+        elif left > 0:
+            right += 1
+        return max(left, right)
+```
 
 
 
