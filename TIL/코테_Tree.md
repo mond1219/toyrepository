@@ -156,6 +156,17 @@ class MaximumDepthOfBinaryTree(object):
         return max(left, right)
 ```
 
+23.10.23 노씨풀이 post order 방식
+```python
+def maxDepth(root):
+    if root is None:
+        return 0
+    left_depth = maxDepth(root.left)
+    rignt_depth = maxDepth(root.right)
+
+    return max(left_depth, rignt_depth)+1
+```
+
 
 
 
