@@ -47,11 +47,11 @@ graph = [
 
 ### 너비 우선 탐색 BFS, Breadth-First search 
 
-```
+```python
 graph = {
           'A' : ['B', 'D', 'E'],
           'B' : ['A', 'C', 'D'],
-          'C' : ['B']
+          'C' : ['B'],
           'D' : ['A', 'B'],
           'E' : ['A']
 }
