@@ -72,3 +72,43 @@ def bfs(graph, start_v):
 
 bfs(graph, 'A')
 ```
+### 깊이 우선 탐색 DFS, Depth-first search 
+
+```python
+graph = {
+          'A' : ['B', 'D', 'E'],
+          'B' : ['A', 'C', 'D'],
+          'C' : ['B'],
+          'D' : ['A', 'B'],
+          'E' : ['A']
+}
+
+# DFS로 구현
+def dfs(graph, cur_v, visited = []);
+    visited.append(cur_v)
+    for v in graph[cur_v]:
+        if v not in visited:
+            visited = dfs(graph, v, visited)
+    return visited
+dfs(graph, 'A')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
