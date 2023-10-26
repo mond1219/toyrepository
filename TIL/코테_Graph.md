@@ -40,3 +40,35 @@ graph = [
           [1, 1, 1, 1, 1],  
           ]
 ```
+
+## 그래프 순회 Traversal
+- 그래프 탐색(search)라고도 불리며, 그래프의 각 정점을 방문하는 과정
+- 순회에는 크게 깊이 우선 탐색 (Depth-First Search)와 너비 우선 탐색(Breadth-First Search)가 존재
+
+### 너비 우선 탐색 BFS, Breadth-First search 
+
+```
+graph = {
+          'A' : ['B', 'D', 'E'],
+          'B' : ['A', 'C', 'D'],
+          'C' : ['B']
+          'D' : ['A', 'B'],
+          'E' : ['A']
+}
+
+# BFS로 구현
+from collections import deque
+
+def bfs(graph, start_v):
+    visit = [start_v]
+    queue = deque(start_v)
+    while queue:
+        cur_v = queue.popleft()
+        for v in graph[cur_v]:
+            if v not in visit:
+                visit.append(v)
+                queue.append(v)
+    return visit
+
+bfs(graph, 'A')
+```
