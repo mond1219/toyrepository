@@ -93,6 +93,41 @@ def dfs(graph, cur_v, visited = []);
 dfs(graph, 'A')
 ```
 
+### Number Of Islands 문제  
+- 23.10.29 DFS 내 풀이
+```python
+    def NumberOfIslandsDFS(graph, visitSet):
+        landCount = 0
+        for yRow, yValue in enumerate(graph):
+            for xRow, xValue in enumerate(yValue):
+                if graph[yRow][xRow] == '1' and (yRow, xRow) not in visitSet:
+                    landCount += 1
+                    queue = deque()
+                    queue.append((xRow, yRow))
+                    visitSet.add((xRow, yRow))
+                    while queue:
+                        cur_x, cur_y = queue.popleft()
+                        if (cur_y, cur_x+1) not in visitSet and len(yValue) > cur_x +1 and graph[cur_y][cur_x+1] == '1':
+                            queue.append((cur_x+1, cur_y))
+                            visitSet.add((cur_x+1, cur_y))
+                        if (cur_y+1, cur_x) not in visitSet and len(graph) > cur_y+1 and graph[cur_y+1] == '1':
+                            queue.append((cur_x, cur_y+1))
+                            visitSet.add((cur_x, cur_y+1))
+        return landCount
+# grid = [
+#         ['1', '1', '1', '1', '0'],
+#         ['1', '1', '0', '1', '0'],
+#         ['1', '1', '0', '0', '0'],
+#         ['0', '0', '0', '0', '0'],
+#     ]
+grid = [
+        ['1', '1', '0', '0', '0'],
+        ['1', '1', '0', '0', '0'],
+        ['0', '0', '1', '0', '0'],
+        ['0', '0', '0', '1', '1'],
+    ]
+NumberOfIslandsDFS(grid, set())
+```
 
 
 
