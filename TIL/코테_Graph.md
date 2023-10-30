@@ -1,3 +1,5 @@
+출처 : https://www.nossi.dev/
+------
 # Graph
 - 그래프 G(V,E)는 어떤 자료나 개념을 표현하는 정점(vertex)들의 집합 V와 이들을 연결하는 간성(edge)들의 집합 E로 구성된 자료구조
 
@@ -128,7 +130,39 @@ grid = [
     ]
 NumberOfIslandsDFS(grid, set())
 ```
+- 23.10.30 노씨 풀이
+```python
+def numIslands_BFS(grid):
+    number_of_islands = 0
+    m = len(grid)
+    n = len(grid[0])
+    visited = [[False]*n for _ in range(m)]
+    def bfs(x, y):
+        # 상하좌우로 이동
+        dx = [-1, 1, 0, 0]
+        dy = [0, 0, -1, 1]
+        visited[x][y] = True
+        queue = deque()
+        queue.append((x, y))
+        while queue:
+            cur_x, cur_y = queue.popleft()
 
+            for i in range(4):
+                next_x = cur_x + dx[i]
+                next_y = cur_y + dy[i]
+                if next_x >= 0 and next_x < m and next_y >= 0 and next_y < n : # 방문하면 안되는 좌표
+                    if grid[next_x][next_y] == '1' and not visited[next_x][next_y] :# and 물인곳 방문 X and 방문했던곳 방문 X :
+                        visited[next_x][next_y] = True
+                        queue.append((next_x, next_y))
+
+
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == '1' and not visited[i][j]:
+                bfs(i, j)
+                number_of_islands += 1
+    return number_of_islands
+```
 
 
 
