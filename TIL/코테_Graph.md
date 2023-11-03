@@ -197,7 +197,28 @@ def numIslands_BFS(grid):
                         visited[next_r][
 ```
 
+### Keys and Rooms
+- 23.11.03 나의 풀이
 
+```python
+    def keysAndRooms(rooms):
+        queue = deque()
+        queue.append(rooms[0])
+        visited = [0]
+        while queue:
+            cur_Keys = queue.popleft()
+            for key in cur_Keys:
+                if key not in visited:
+                    visited.append(key)
+                    queue.append(rooms[key])
+        if len(visited) == len(rooms):
+            return True
+        return False
+
+# rooms = [[1], [2], [3], []]
+rooms =[[1,3], [3, 0, 1], [2], [0]]
+print(keysAndRooms(rooms))
+```
 
 
 
