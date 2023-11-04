@@ -219,7 +219,22 @@ def numIslands_BFS(grid):
 rooms =[[1,3], [3, 0, 1], [2], [0]]
 print(keysAndRooms(rooms))
 ```
+- 23.11.04 노씨님의 DFS 풀이
 
+```python
+ def canVisitAllRooms(rooms):
+        visited = set()
+        # v에 연결되어있는 모든 vertex 방문할거다.
+        def dfs(v):
+            visited.add(v)
+            for next_v in rooms[v]:
+                if next_v not in visited:
+                    dfs(next_v)
+        dfs(0)
+        if len(visited) == len(rooms):
+            return True
+        return False
+```
 
 
 
