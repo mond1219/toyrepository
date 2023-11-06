@@ -9,6 +9,27 @@
   3. 하위 문제에 대한 답을 통해 원래 문제에 대한 답을 계산한다. (optimal substructure - 최적 부분 구조)
      - 최적 부분 구조 : 하위 부분 문제에서 구한 최적의 답이 합쳐진 큰 문제의 최적의 답을 구할 수 있는 구조
 
+  ## Top-down 방식
+  ```python
+  memo = {}
+  def fibo(n):
+    if n == 1 or n == 2:
+      return 1
+    if not in memo:
+      memo[n] = fibo(n-1) + fibo(n-2)
+    return memo[n]
+  ```
+
+  ## Bottom-up 방식
+  ```python
+  memo = {}
+  def fibo(n):
+    if n == 1 or n == 2:
+      return 1
+    for i in range(3, n+1):
+      memo[i] = memo[i-1] + memo[i-2]
+    return memo[n]
+  ```
 
 
 
