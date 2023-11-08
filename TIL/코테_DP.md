@@ -31,7 +31,35 @@
     return memo[n]
   ```
 
+## Climbing stairs
+- 23.11.08 나의 풀이 botom-up 방식으로 풀었다. 
+```python
+    def climbingStairs(n,  memo):
 
+        for now in range(1, n+1):
+            if now == 1:
+                memo[1] = 1
+            elif now == 2:
+                memo[2] = 2
+            elif now-1 in memo:
+                memo[now] = memo[now-1] + memo[now-2]
+
+        return memo[n]
+
+
+    print(climbingStairs(4, {}))
+```
+- 23.11.08 노씨님 Top-down 방식 풀이
+```python
+    def climbingStairs_Top(n):
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+        if n not in memo:
+            memo[n] = climbingStairs_Top(n - 1) + climbingStairs_Top(n - 2)
+        return memo[n]
+```
 
 
 
