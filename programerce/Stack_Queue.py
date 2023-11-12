@@ -38,3 +38,21 @@ def functionDev(progresses, speeds):
     answer.append(cnt) # 마지막 배포하는 기능 개수 담아주기
     return answer
 
+# 올바른 괄호
+# https://school.programmers.co.kr/learn/courses/30/lessons/12909
+from collections import deque
+
+def correctGwalho(s):
+    queue = deque()
+    for now in s:
+        if now == '(':
+            queue.append(now)
+        elif len(queue) <= 0:
+            return False
+        else:
+            queue.popleft()
+
+
+    if  len(queue) != 0:
+        return False
+    return True
