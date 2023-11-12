@@ -56,3 +56,25 @@ def correctGwalho(s):
     if  len(queue) != 0:
         return False
     return True
+
+# 프로세스
+# https://school.programmers.co.kr/learn/courses/30/lessons/42587
+def process(priorities, location):
+    standard = priorities.copy()
+    standard.sort(reverse=True)
+    queue = deque()
+    for idx, now in enumerate(priorities):
+        if location == idx:
+            queue.append((now, True))
+        else:
+            queue.append((now, False))
+    idx = 0
+    while queue:
+        now, check = queue.popleft()
+        if now == standard[0]:
+            idx += 1
+            standard.pop(0)
+            if check:
+                return idx
+        else:
+            queue.append((now, check))
