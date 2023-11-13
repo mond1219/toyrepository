@@ -78,3 +78,21 @@ def process(priorities, location):
                 return idx
         else:
             queue.append((now, check))
+
+# 주식 가격 
+# https://school.programmers.co.kr/learn/courses/30/lessons/42584
+def price(prices):
+    print(prices)
+    answer = [ _ for _ in range(len(prices)-1, -1, -1)]
+    queue = deque()
+    for idx, now in enumerate(prices):
+        while queue:
+            before_idx, before_value = queue.popleft()
+            if now < before_value:
+                answer[before_idx] = idx-before_idx
+            else:
+                queue.appendleft((before_idx, before_value))
+                break
+        queue.appendleft((idx, now))
+
+    return answer
