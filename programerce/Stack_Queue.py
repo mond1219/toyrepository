@@ -99,19 +99,19 @@ def price(prices):
 
 # 다리를 지나는 트럭 
 # https://school.programmers.co.kr/learn/courses/30/lessons/42583
-# 23.11.15 하나 테스트케이스 시간초과로 실패
 ```python 
     def bridgeTruck(bridge_length, weight, truck_weights):
 
         bridge = [0 for _ in range(bridge_length)]
         cnt = 0
-
+        now_weight = 0
         while bridge:
             cnt += 1
-            bridge.pop(0)
+            now_weight -= bridge.pop(0)
             if truck_weights:
-                if sum(bridge) + truck_weights[0] <= weight:
+                if now_weight + truck_weights[0] <= weight:
                     t = truck_weights.pop(0)
+                    now_weight += t
                     bridge.append(t)
                 else:
                     bridge.append(0)
