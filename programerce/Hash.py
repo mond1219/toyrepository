@@ -23,3 +23,20 @@ def numberList2(phone_book):
             if start in map and start != nums:
                 return False
     return True
+
+
+# 의상
+# https://school.programmers.co.kr/learn/courses/30/lessons/42578
+def clothe(clothes):
+    clotheMap = {}
+    for row in clothes:
+        clotheName  = row[0]
+        i       = row[1]
+        if i not in clotheMap.keys():
+            clotheMap[i] = [clotheName]
+        else:
+            clotheMap[i].append(clotheName)
+    answer = 1
+    for key, value in clotheMap.items():
+        answer = answer * (len(value)+1) # 옷의 개수 + 해당 옷의 종류를 안입고 있을 경우의 수
+    return answer -1 # 모두 0인경우의 수 빼주기 
