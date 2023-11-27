@@ -13,3 +13,23 @@ def palindrom():
             str = str[1:len(str) - 1]
     if check :
         print(1)
+
+# 별찍기-7
+# https://www.acmicpc.net/problem/2444
+def printStar():
+    n = int(input())
+
+    for row in range(1, n+1):
+        str = ''
+        for i in range(0, n-row):
+            str += ' '
+        for star in range(0, 1+2*(row-1)):
+            str += '*'
+        print(str)
+    for row in range(1, n):
+        str = ''
+        for i in range(0, row):
+            str += ' '
+        for star in range(0, (2*n-1)-(row*2)):
+            str += '*'
+        print(str)
