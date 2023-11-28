@@ -47,3 +47,30 @@ def nite():
         else:
             answer +=  '0 '
     print(answer)
+    
+# 그룹 단어 체커
+# https://www.acmicpc.net/problem/1316
+
+def checker():
+    n = int(input())
+    answer  = n
+    for i in range(0, n):
+        str = input()
+        stack = []
+        strSet = set()
+        while len(str) > 0:
+            now = str[0]
+            if len(stack) == 0:
+                stack.append(now)
+            elif now != stack[-1]:
+                checkStr = stack.pop(-1)
+                if checkStr not in strSet:
+                    strSet.add(checkStr)
+                    stack.append(now)
+                else:
+                    str = ''
+                    answer -= 1
+            str = str[1:]
+        if len(stack) > 0 and stack[-1] in strSet:
+            answer -= 1
+    print(answer)
