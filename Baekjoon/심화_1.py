@@ -33,3 +33,17 @@ def printStar():
         for star in range(0, (2*n-1)-(row*2)):
             str += '*'
         print(str)
+
+# 킹, 퀸, 룩, 비숍, 나이트, 폰
+# https://www.acmicpc.net/problem/3003
+
+def nite():
+    black = [1, 1, 2, 2, 2, 8]
+    white = input().split(' ')
+    answer = ''
+    for idx, now in enumerate(white):
+        if int(now) != black[idx]:
+            answer += str(black[idx] - int(now))+' '
+        else:
+            answer +=  '0 '
+    print(answer)
