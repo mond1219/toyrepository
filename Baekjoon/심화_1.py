@@ -91,3 +91,30 @@ def yournum():
             total += float(now[1])
             ans += float(now[1]) * check[now[2]]
     print(round(ans/total),6)
+
+# 크로아티아 알파벳
+# https://www.acmicpc.net/problem/2941
+
+str = input()
+cnt = 0
+while len(str) > 1:
+    now = str[0]
+    if now == 'c':
+        if str[1] in ['=', '-']:
+            str = str[1:]
+    elif now == 'd':
+        if str[1] == '-':
+            str = str[1:]
+        elif str[1:3] == 'z=':
+            str = str[2:]
+    elif now == 'l' or now == 'n':
+        if str[1] == 'j':
+            str = str[1:]
+    elif now == 's' or now =='z':
+        if str[1] == '=':
+            str = str[1:]
+
+    cnt += 1
+    str = str[1:]
+    
+print(cnt+len(str))
