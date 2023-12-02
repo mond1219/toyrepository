@@ -118,3 +118,20 @@ while len(str) > 1:
     str = str[1:]
     
 print(cnt+len(str))
+
+# 이차원 배열 
+# https://www.acmicpc.net/problem/2738
+def hangAdd():
+    n, m = input().split(' ')
+    first = []
+    answer = ''
+    for nRow in range(0,2*int(n)):
+        nowHang = input().split(' ')
+        if nRow < int(n):
+            first.append(nowHang)
+        else:
+            # first 배열과 연산 시작
+            for l in range(0, int(m)):
+                answer += str(int(first[nRow-int(n)][l]) + int(nowHang[l])) + ' '
+            answer += '\n'
+    print(answer)
