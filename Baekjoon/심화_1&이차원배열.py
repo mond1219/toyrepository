@@ -135,3 +135,18 @@ def hangAdd():
                 answer += str(int(first[nRow-int(n)][l]) + int(nowHang[l])) + ' '
             answer += '\n'
     print(answer)
+
+# 세로 읽기
+# https://www.acmicpc.net/problem/10798
+
+def colRead():
+    inputArray = []
+    for _ in range(0,5):
+        now = input()
+        inputArray.append(now)
+    answer = ''
+    for i in range(0,15):
+        for j in range(0,5):
+            if len(inputArray[j]) > i:
+                answer += inputArray[j][i]
+    print(answer)
