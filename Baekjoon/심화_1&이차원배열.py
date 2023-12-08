@@ -150,3 +150,22 @@ def colRead():
             if len(inputArray[j]) > i:
                 answer += inputArray[j][i]
     print(answer)
+
+# 색종이 
+# https://www.acmicpc.net/problem/2563
+ def colorPaper():
+    num = input()
+    dohwa = [[0]*100 for _ in range(100)]
+
+    for _ in range(0, int(num)):
+        paper = input().split(' ')
+        xStr = int(paper[0])
+        yStr = int(paper[1])
+        for x in range(xStr, xStr +10):
+            for y in range(yStr, yStr + 10):
+                dohwa[x][y] = 1
+    answer = 0
+    for x in range(100):
+        for y in range(100):
+            answer += dohwa[x][y]
+    print(answer)
