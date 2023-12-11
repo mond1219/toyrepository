@@ -24,4 +24,23 @@ def numChange2():
     while N > 0:
         answer += str(alpaList[N%B])
         N = N//B
+    print(answer)
+
+# 세탁소 사장 동혁
+# https://www.acmicpc.net/problem/2720
+
+def lundryCoin():
+    n = int(input())
+    for _ in range(n):
+        coin = int(input())
+
+        answer = ''
+
+        for c in [25, 10, 5, 1]:
+            # Quarter
+            if coin//c > 0:
+                answer += str(coin//c) + ' '
+                coin = coin % c
+            else:
+                answer += '0 '
         print(answer)
