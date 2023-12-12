@@ -44,3 +44,13 @@ def lundryCoin():
             else:
                 answer += '0 '
         print(answer)
+
+# 중앙 이동 알고리즘 
+# https://www.acmicpc.net/problem/2903
+
+def centeralg():
+    n = int(input())
+    i = 2
+    for _ in range(n):
+        i = i+(i-1)
+    print(i*i)
