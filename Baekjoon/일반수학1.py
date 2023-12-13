@@ -54,3 +54,19 @@ def centeralg():
     for _ in range(n):
         i = i+(i-1)
     print(i*i)
+
+# 약수와 배수 
+# https://www.acmicpc.net/problem/5086
+def mulDiv():
+    while True:
+        f, s = input().split(' ')
+        F = int(f)
+        S = int(s)
+        if F== 0 and S == 0:
+            break
+        if F < S and S%F == 0:
+            print("factor")
+        elif F > S and F%S == 0:
+            print("multiple")
+        else:
+            print("neither")
