@@ -86,3 +86,24 @@ def getDiv():
             if K == 0:
                 answer = now
     print(answer)
+
+# 약수들의 합
+# https://www.acmicpc.net/problem/9506
+
+def sumDiv():
+    while True:
+        now = int(input())
+        if now == -1:
+            break
+
+        divList= []
+        for _ in range(1, now):
+            if now % _ == 0:
+                divList.append(_)
+        if sum(divList) == now:
+            answer = str(now) + ' = '
+            for _ in divList:
+                answer += str(_) + ' + '
+            print(answer[:-2])
+        else:
+            print(str(now) + ' is NOT perfect.')
