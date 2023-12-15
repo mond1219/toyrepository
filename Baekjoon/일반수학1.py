@@ -70,3 +70,19 @@ def mulDiv():
             print("multiple")
         else:
             print("neither")
+
+# 약수 구하기 
+# https://www.acmicpc.net/problem/2501
+
+def getDiv():
+    n, k = input().split(' ')
+    N = int(n)
+    K = int(k)
+
+    answer = 0
+    for now in range(1, N+1):
+        if N % now == 0:
+            K -= 1
+            if K == 0:
+                answer = now
+    print(answer)
