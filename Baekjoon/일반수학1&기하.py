@@ -107,3 +107,18 @@ def sumDiv():
             print(answer[:-2])
         else:
             print(str(now) + ' is NOT perfect.')
+
+
+# 직사각형
+# https://www.acmicpc.net/problem/27323
+a = int(input())
+b = int(input())
+
+print(a*b)
+
+# 수학은 체육과목입니다. 
+# https://www.acmicpc.net/problem/15894
+# 위: n, 왼: n, 오: n, 아: n = n*4
+n = int(input())
+print(n*4)
+
