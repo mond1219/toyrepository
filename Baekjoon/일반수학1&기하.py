@@ -122,3 +122,28 @@ print(a*b)
 n = int(input())
 print(n*4)
 
+# 대지
+# https://www.acmicpc.net/problem/9063
+def daji():
+    n = int(input())
+    minX = 0
+    maxX = 0
+    minY = 0
+    maxY = 0
+    for _ in range(n):
+        x, y = input().split(' ')
+        X = int(x)
+        Y = int(y)
+        if _ == 0:
+            minX = X
+            minY = Y
+            maxX = X
+            maxY = Y
+        else:
+            minX = min(minX, X)
+            maxX = max(maxX, X)
+            minY = min(minY, Y)
+            maxY = max(maxY, Y)
+
+    print((maxX - minX) * (maxY - minY))
+
