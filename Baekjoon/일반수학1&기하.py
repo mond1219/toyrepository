@@ -147,3 +147,22 @@ def daji():
 
     print((maxX - minX) * (maxY - minY))
 
+# 삼각형 외우기 
+# https://www.acmicpc.net/problem/10101
+def triangle():
+    answer = 0
+    cnt = set()
+    for _ in range(3):
+        n = int(input())
+        answer += n
+        cnt.add(n)
+
+    if answer == 180:
+        if len(cnt) == 1:
+            print("Equilateral")
+        elif len(cnt) == 2:
+            print("Isosceles")
+        else:
+            print("Scalene")
+    else:
+        print("Error")
