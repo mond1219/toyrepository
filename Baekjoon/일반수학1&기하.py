@@ -184,3 +184,11 @@ def triangleLen():
             print("Isosceles")
         else:
             print("Scalene")
+
+# 세 막대
+# https://www.acmicpc.net/problem/14215
+def macdea():
+    nums = list(map(int, input().split(' ')))
+    nums.sort()
+    maxLen = nums[0] + nums[1]
+    print( maxLen + min(maxLen-1, nums[2]))
